@@ -57,7 +57,7 @@ sub game_form {
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-	return $c->response->redirect($c->uri_for('members'));
+	return $c->response->redirect($c->uri_for('/members/all/'));
 }
 
 sub members_base : Chained('/') PathPart('members') CaptureArgs(0) {
