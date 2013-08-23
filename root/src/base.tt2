@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Huddersfield Scrabble Club [% title %]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-nr-min.css">
+    
+    <link rel="stylesheet/less" type="text/css" href="/static/less/scrabble.less">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.3.3/less.min.js"></script>
+    
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="layout" class="pure-g">
+      <!-- Side Nav -->
+      <div id="nav" class="pure-u">
+        <div class="nav-inner">
+          <h1 id="logo">HUDDERSFIELD<br><span id="logo-line2">SCRABBLE CLUB</span></h1>
+          <div class="pure-menu pure-menu-open">
+            <ul>
+              <li [% IF menu_members %]class="pure-menu-selected"[% END %]><a href="/members/all/">Members</a></li>
+              <li[% IF menu_leaderboard %]class="pure-menu-selected"[% END %]><a href="/members/leaderboard/">Leaderboard</a></li>
+            </ul>
+          </div>
+        </div>
+      </div> <!-- /#nav -->
+      
+      [% content %]
+      
+    </div> <!-- #layout -->
+    
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/scrabble.js"></script>
+    
+  </body>
+</html>

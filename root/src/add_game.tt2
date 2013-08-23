@@ -1,0 +1,9 @@
+[% WRAPPER members_base.tt2 
+	title = "Add Game"
+	menu_members = 1
+%]
+
+<h1>Add New Game</h1>
+[% form.render %]
+
+[% END %]

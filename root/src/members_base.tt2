@@ -1,0 +1,48 @@
+[% WRAPPER base.tt2 %]
+<!-- User List Menu -->
+      <div id="user-list" class="pure-u">
+        
+        
+        <div id="user-list-control">
+          <div class="pure-g" id="user-list-control-search">
+            <form class="pure-form">
+              <input id="ulcsearch" class="pure-input-1" type="text" placeholder="Search by name / email">
+            </form>
+          </div> 
+          <div class="pure-g" id="user-list-control-sortadd">
+            <div class="pure-u-1">
+              Sort by: <a href="#" id="sort-name" class="sorted">Name</a> / <a href="#" id="sort-rank">Average Score</a>
+            </div>
+            <div class="pure-u-1">
+              <a href="/members/update/" id="add-user" class="pure-button pure-button-xsmall pure-button-primary"><i class="icon-user"></i> Add Member</a>
+            </div>
+          </div>
+        </div>
+        [% FOR member IN members %]
+        <!-- User list item -->
+        <a href="/members/show/[% member.id %]" class="pure-g user-item 
+          [% IF selected_member.id == member.id %]
+            user-item-selected
+          [% END %]" data-rank="[% member.average_score %]" href="#" data-name="[% member.last_name | html %][% member.first_name | html %]">
+          <div class="pure-u-1">
+            <div class="user-list-details">
+              <h5 class="name">[% member.first_name | html %] [% member.last_name | html %]<br /><small>[% member.email | html %]</small></h5>
+            </div>
+            <div class="pure-g stats"> <!-- TODO: Check whether its better responsive or not -->
+              <div class="pure-u-1-4 rank">AV. SCORE<br /><span>[% member.average_score %]</span></div>
+              <div class="pure-u-1-4 played">PLAYED<br /><span>[% member.games_played %]</span></div>
+              <div class="pure-u-1-4 won">WON<br /><span>[% member.games_won %]</span></div>
+              <div class="pure-u-1-4 lost">LOST<br /><span>[% member.games_lost %]</span></div>
+            </div>
+          </div>
+        </a><!-- .pure-g.user-item -->
+        [% END %]
+      </div> <!--#user-list -->
+      
+      <!-- Main Pane -->
+      <div id="main" class="pure-u">
+        <div id="main-inner">
+          [% content %]
+        </div>
+      </div> <!-- #main -->
+[% END %]

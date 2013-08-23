@@ -1,0 +1,83 @@
+[% WRAPPER members_base.tt2 
+	title = "View Member"
+	menu_members = 1
+%]
+<span class="status">[% status_msg %]</span>
+
+[% IF selected_member %]
+<div class="pure-g" id="user-header">
+    <div class="pure-u-3-4">
+      <h1>[% selected_member.first_name | html %] [% selected_member.last_name | html %]</h1>
+      <p>
+        <a href="mailto:[% selected_member.email | html %]">[% selected_member.email | html %]</a> / <a href="tel:[% selected_member.phone | html %]">[% selected_member.phone | html %]</a><br>
+        <small>Member since [% selected_member.joined.strftime('%d %B %Y') %]</small><br>
+      </p>
+      <a href="/members/update/[% selected_member.id %]" class="pure-button pure-button-primary"><i class="icon-pencil"></i> Edit Member</a> 
+    </div>
+  </div>
+  <div class="pure-g">
+    <div class="pure-u-1" id="user-stats">
+    <h2>Player Stats</h2>
+      <table class="pure-table">
+        <thead>
+          <tr>
+            <th>Average Score</th>
+            <th>Played</th>
+            <th>Won</th>
+            <th>Lost</th>
+            <th>Drawn</th>
+            <th>Best Game</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[% selected_member.average_score %]</td>
+            <td>[% selected_member.games_played %]</td>
+            <td>[% selected_member.games_won %]</td>
+            <td>[% selected_member.games_lost %]</td>
+            <td>[% selected_member.games_drawn %]</td>
+            <td>
+            	[% selected_member.best_game.get_score_for_id(selected_member.id) %] <br>
+            	<small>
+            		Against: [% selected_member.best_game.get_opponent_name(selected_member.id) %]<br>
+            		Date: [% selected_member.best_game.played_date.strftime('%d %B %Y') %]
+        		</small>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pure-g">
+    <div class="pure-u-1" id="user-game-history">
+      <h2>
+        Game History
+        <a href="/members/add_game/" class="pure-button pure-button-green"><i class="icon-plus"></i> Add Game</a>
+      </h2>
+      
+      <table class="pure-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>[% selected_member.first_name %]'s Points</th>
+            <th>Opponent's Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          [% FOR game IN selected_member.get_games %]
+	          <tr>
+	            <td>[% game.played_date.strftime('%d %B %Y') %]</td>
+	            <td>[% game.get_opponent_name(selected_member.id) %]</td>
+	            <td>[% game.get_score_for_id(selected_member.id) %]</td>
+	            <td>[% game.get_opponent_score_for_id(selected_member.id) %]</td>
+	          </tr>
+          [% END %]
+        </tbody>
+      </table>
+    </div>
+  </div>
+[% ELSE %]
+No member selected
+[% END %]
+[% END %]

@@ -1,0 +1,202 @@
+/* Colour palette */
+
+@dark-blue: #1e4564;
+@red: #cb585b;
+@beige: #e1decf;
+@black: darken(@dark-blue, 50%);
+@grey: lighten(@black, 25%);
+@white: lighten(@beige, 10%);
+@dark-white: darken(@white, 20%);
+@green: green;
+
+body {
+  font-family:  'Source Sans Pro', Helvetica, Arial, Sans-Serif;
+  //font-size: 14px;
+  background-color: @beige;
+}
+
+span.status {
+  color: @green;
+}
+
+.pure-button-green {
+  background: @green;
+}
+
+#layout {
+  padding-left: 500px;
+  position: relative;
+}
+
+#nav, #user-list {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+}
+
+#nav {
+  color: @beige;
+  margin-left: -500px;
+  width: 150px;
+  padding: 2em 0;
+  background-color: @dark-blue;
+  text-align: center;
+  
+  .nav-menu-button {
+    display: none;
+  }
+  
+  #logo {
+    font-size: 23px;
+    font-weight: 300;
+    line-height: 23px;
+    margin-bottom: 15px;
+    cursor: default;
+    
+    span#logo-line2 { 
+      font-size: 20px; 
+      font-weight: 800;
+    }
+  }
+  
+  .pure-menu.pure-menu-open {
+    background-color: inherit;
+    
+    li.pure-menu-selected a { background-color: lighten(@dark-blue, 5%); }
+    
+    li a {
+      color: @beige;
+      margin-left: 10px;
+      text-align: left;
+      &:hover { 
+        background-color: lighten(@dark-blue, 10%); 
+        margin-left: 10px;
+      }
+    }
+    
+  }
+}
+
+#user-list {
+  margin-left: -350px;
+  width: 350px;
+  border-right: 1px solid @black;
+  
+  div#user-list-control {
+    padding: 14px 16px;
+    border-bottom: 1px solid @white;
+    text-align: center;
+    
+    div#user-list-control-sortadd {
+      font-size:small;
+      margin-top: 14px;
+      
+      a {
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      
+      a.sorted {
+        text-decoration: underline;
+      }
+      
+      div.pure-u-2-3 {padding-top: 10px; }
+      
+      a#add-user { 
+        //display: block;
+        //font-size: small;
+      }
+    }
+  }
+  
+  a.user-item {
+    padding: 14px 16px;
+    display: block;
+    color: @black;
+    border-bottom: 1px solid @white;
+    
+    &.user-item-selected { 
+      background-color: @white; 
+      
+      &:hover {
+        cursor: default;
+        background-color: @white;
+      }
+    }
+    
+    &:hover { background-color: @dark-white; }
+    
+    img {
+      border-radius: 3px;
+      margin-right: 8px;
+    }
+    
+    h5.name {
+      margin: 6px 0 10px;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      small {
+        font-size: 14px;
+        color: @grey;
+        font-weight: normal;
+      }
+    }
+    
+    div.stats {
+      font-size: 14px;
+      text-align: center;
+      div.rank, div.played, div.won, div.lost {
+        span { font-size: 20px; }
+      }
+    }
+  }
+  
+}
+
+.pure-menu.pure-menu-open {
+  border: none
+}
+
+
+#main {
+  width: 100%;
+  
+  #main-inner {
+    padding: 14px 16px;
+    
+    #user-header {
+      img {
+        margin-right: 14px;
+        border-radius: 6px;
+      }
+      h1 {
+        margin: 4px 0 6px;
+      }
+      p {
+        margin: 0 0 6px;
+        small {
+          color: @grey;
+        }
+      }
+      button {
+        font-size: 10px;
+        margin-right: 6px;
+      }
+    }
+    
+    #user-game-history {
+      h2 {
+        button {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}

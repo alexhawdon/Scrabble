@@ -1,0 +1,35 @@
+[% WRAPPER members_base.tt2 
+	title = "Leaderboard"
+	menu_leaderboard = 1
+%]
+
+<h1>Leaderboard</h1>
+
+[% IF leaderboard.0 %]
+<table class="pure-table">
+	<thead>
+		<tr>
+			<th>RANK</th>
+			<th>Member</th>
+			<th>Average Score</th>
+			<th>Games Played</th>
+			<th>Date Joined</th>
+		</tr>
+	</thead>
+	<tbody>
+		[% FOR member IN leaderboard %]
+		<tr>
+			<td>[% loop.count %]</td>
+			<td>[% member.full_name %]</td>
+			<td>[% member.average_score %]</td>
+			<td>[% member.games_played %]</td>
+			<td>[% member.joined.strftime('%d %B %Y') %]</td>
+		</tr>
+		[% END %]
+	</tbody>
+</table>
+<small>Only showing members who have played at least 10 games.</small>
+[% ELSE %]
+<p>No members to show on leaderboard. Members must have played at least 10 games to feature.</p>
+[% END %]
+[% END %]

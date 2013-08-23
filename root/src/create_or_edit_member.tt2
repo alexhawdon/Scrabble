@@ -1,0 +1,5 @@
+[% WRAPPER members_base.tt2 %]
+
+[% form.render %]
+
+[% END %]
