@@ -1,1 +1,5 @@
-Run script/scrabble_server.pl to test the application.
+Scrabble Webapp
+
+* Makefile should check for all dependencies
+* Database initialised empty - all functionality required within app
+* Clone the repo, check dependencies, then run 'script/scrabble_server.pl -r' from base directory to start server on localhost:3000
